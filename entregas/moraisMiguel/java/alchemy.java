@@ -12,45 +12,81 @@ class alchemy{
 
         int seleccion;
         int estado = 0;
+        int contador = 0;
 
-        String listaElementos;
+        boolean jugando = true;
 
-        while(estado == 0){
+        while(jugando){
 
-            System.out.println("1.elegir elementos");
-            System.out.println("2.combinar");
-            System.out.println("3.fin");
+            while(estado == 0){
 
-            seleccion = input.nextInt();
-            estado = seleccion;
-        }
+                System.out.println("1.elegir elementos");
+                System.out.println("2.combinar");
+                System.out.println("3.fin");
 
-        while(estado == 1){
-
-            System.out.println("lista de elementos: ");
-
-            for(int listado = 0; listado < 29; listado++){
-                System.out.println(listaElementos);
+                seleccion = input.nextInt();
+                estado = seleccion;
             }
-            
+
+            while(estado == 1){
+
+                System.out.println("lista de elementos: ");
+
+                for(int listado = 0; listado < 29; listado++){
+                    System.out.println(listaElementos(listado));
+                    contador++;
+                }
+
+                if(contador == 29){
+                    estado = 0;
+                }
+
+            }
+
+            while(estado == 2){
+
+                System.out.println("elemento 1:");
+                int seleccion1 = input.nextInt();
+                
+                System.out.println("elemento 2:");
+                int seleccion2 = input.nextInt();
+
+            }
+
+            while(estado == 3){
+
+                System.out.println("seguro? (si=1 no=2)");
+                seleccion = input.nextInt();
+
+                if(seleccion == 1){
+                    jugando = false;
+                    estado = 0;
+                }
+
+                if(seleccion == 2){
+                    estado = 0;
+                }
+            }
         }
     }
 
-    static void listaElementos(int listado, String listaElementos){
+    static String listaElementos(int listado){
 
-        switch(listado){
+        return switch (listado){
 
-            case 1:
-                listaElementos = "aire";
-            case 2:
-                listaElementos = "agua";
-            case 3:
-                listaElementos = "tierra";
-            case 4:
-                listaElementos = "fuego";
-            default:
-                listaElementos = "fin";
-            return;
-        }
+            case 1 -> "aire";
+                
+            case 2 -> "agua";
+                
+            case 3 -> "tierra";
+                
+            case 4 -> "fuego";
+
+            case 5 -> "vapor";
+                
+            default -> "fin";
+                
+        };
+
     }
 }

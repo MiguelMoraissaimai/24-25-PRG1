@@ -5,17 +5,17 @@ class MoleGame {
 
                 int turnos = 0;
                 int puntos = 0;
-                int moleSpawn = 0;
+                int topo = 0;
 
                 Scanner input = new Scanner(System.in);
 
                 while (turnos < 30) {
 
-                        System.out.println(moleSpawn);
+                        System.out.println(topo);
 
                         int[][] matriz = {
                                         { 4, 4, 4 },
-                                        { 4, moleSpawn, 4 },
+                                        { 4, topo, 4 },
                                         { 4, 4, 4 }
                         };
 
@@ -31,18 +31,25 @@ class MoleGame {
 
                         int whack = input.nextInt();
 
-                        if (moleSpawn == 1 && whack == 1) {
+                        if (topo == 1 && whack == 1) {
+
                                 puntos++;
-                                moleSpawn = 3;
+                                topo = 3;
                         }
 
-                        if (moleSpawn == 0 && whack == 1)
-                                moleSpawn = 2;
+                        if (topo == 0 && whack == 1){
 
-                        if (whack == 0)
-                                moleSpawn = (int) (Math.random() * (2));
+                                topo = 2;
 
-                        turnos++;
+                        }
+
+                        if (whack == 0){
+
+                                topo = (int) (Math.random() * (2));
+
+                                turnos++;
+
+                        }
                 }
 
                 input.close();
